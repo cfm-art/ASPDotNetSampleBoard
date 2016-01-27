@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = "とっぷぺーじ";
+}
+
+<div>
+    @Html.ActionLink( "掲示板一覧", "", "Board" )
+</div>
+<div>
+    @Html.ActionLink( "掲示板追加", "Create", "Board" )
+</div>

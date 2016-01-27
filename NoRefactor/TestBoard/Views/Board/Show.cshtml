@@ -1,0 +1,35 @@
+﻿@model TestBoard.Models.BoardEntity
+@{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    ViewBag.Title = Model.Title;
+}
+
+@* 掲示板情報 *@
+<div>
+    <p>@Model.Title</p>
+    <p>@Model.Text</p>
+</div>
+
+@* 返信 *@
+@if ( Model.Posts != null )
+{
+    <div>
+        @foreach ( var post in Model.Posts )
+        {
+            <div>
+                @post.Text
+            </div>
+        }
+    </div>
+}
+
+@* 返信投稿フォーム *@
+<div>
+    @using (Html.BeginForm("PostResponse", "Board", new { Id = Model.Id }, FormMethod.Post ) )
+    {
+        <div>
+            @Html.TextArea( "Text", "" )
+        </div>
+        <input type="submit" value="投稿" />
+    }
+</div>
